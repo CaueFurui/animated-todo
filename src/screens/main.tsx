@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { Center, Fab, Icon, useColorModeValue, VStack } from 'native-base'
 import ThemeToggle from '../components/theme-toggle'
 import { AntDesign } from '@expo/vector-icons'
+import AnimatedColorBox from '../components/animated-color-box'
 import TaskList from '../components/task-list'
 import shortid from 'shortid'
 
@@ -67,10 +68,10 @@ export default function MainScreen() {
   }, [])
 
   return (
-    <Center
-      _dark={{ bg: 'blueGray.900' }}
-      _light={{ bg: 'blueGray.50' }}
+    <AnimatedColorBox
+      bg={useColorModeValue('warmGray.50', 'primary.900')}
       flex={1}
+      w="full"
     >
       <VStack space={5} alignItems="center" w="full">
         <TaskList
@@ -104,6 +105,6 @@ export default function MainScreen() {
           setEditingItemId(id)
         }}
       />
-    </Center>
+    </AnimatedColorBox>
   )
 }

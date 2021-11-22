@@ -1,24 +1,20 @@
 import React, { useCallback } from 'react'
+import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
 import {
-  NativeSyntheticEvent,
   Pressable,
-  TextInputChangeEventData
-} from 'react-native'
-import {
   Box,
-  Text,
   HStack,
-  useTheme,
-  themeTools,
   useColorModeValue,
   Icon,
-  Input
+  Input,
+  useToken
 } from 'native-base'
 import SwipableView from './swipable-view'
 import { Feather } from '@expo/vector-icons'
 import { PanGestureHandlerProps } from 'react-native-gesture-handler'
 import AnimatedCheckbox from './animated-checkbox'
 import AnimatedTaskLabel from './animated-task-label'
+import AnimatedColorBox from './animated-color-box'
 
 interface Props extends Pick<PanGestureHandlerProps, 'simultaneousHandlers'> {
   isEditing: boolean
@@ -43,25 +39,21 @@ const TaskItem = (props: Props) => {
     onFinishEditing,
     simultaneousHandlers
   } = props
-  const theme = useTheme()
-  const highlightColor = themeTools.getColor(
-    theme,
+  const highlightColor = useToken(
+    'colors',
     useColorModeValue('blue.500', 'blue.400')
   )
-  const boxStroke = themeTools.getColor(
-    theme,
+  const boxStroke = useToken(
+    'colors',
     useColorModeValue('muted.300', 'muted.500')
   )
-  const checkMarkColor = themeTools.getColor(
-    theme,
-    useColorModeValue('white', 'white')
-  )
-  const activeTextColor = themeTools.getColor(
-    theme,
+  const checkMarkColor = useToken('colors', useColorModeValue('white', 'white'))
+  const activeTextColor = useToken(
+    'colors',
     useColorModeValue('darkText', 'lightText')
   )
-  const doneTextColor = themeTools.getColor(
-    theme,
+  const doneTextColor = useToken(
+    'colors',
     useColorModeValue('muted.400', 'muted.600')
   )
 
@@ -96,7 +88,7 @@ const TaskItem = (props: Props) => {
         py={2}
         bg={useColorModeValue('warmGray.50', 'primary.900')}
       >
-        <Box width={30} height={30} mr={2}>
+        <AnimatedColorBox width={30} height={30} mr={2}>
           <Pressable onPress={onToggleCheckbox}>
             <AnimatedCheckbox
               highlightColor={highlightColor}
@@ -105,7 +97,7 @@ const TaskItem = (props: Props) => {
               checked={isDone}
             />
           </Pressable>
-        </Box>
+        </AnimatedColorBox>
         {isEditing ? (
           <Input
             placeholder="Task"

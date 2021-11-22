@@ -1,14 +1,14 @@
 import React, { useCallback, useRef } from 'react'
 import { AnimatePresence, View } from 'moti'
+import { Factory } from 'native-base'
 import {
   PanGestureHandlerProps,
   ScrollView
 } from 'react-native-gesture-handler'
 import TaskItem from './task-item'
-import { makeStyledComponent } from '../utils/styled'
 
-const StyledView = makeStyledComponent(View)
-const StylesScrollView = makeStyledComponent(ScrollView)
+const NativeBasedStyledView = Factory(View)
+const NativeBasedStyledScrollView = Factory(ScrollView)
 
 interface TaskItemData {
   id: string
@@ -73,9 +73,9 @@ export const AnimatedTaskItem = (props: TaskItemProps) => {
   }, [data, onRemove])
 
   return (
-    <StyledView
+    <NativeBasedStyledView
       w="full"
-      from={{ opacity: 0, scale: 0.5, marginBottom: -4 }}
+      from={{ opacity: 0, scale: 0.5, marginBottom: -46 }}
       animate={{
         opacity: 1,
         scale: 1,
@@ -98,7 +98,7 @@ export const AnimatedTaskItem = (props: TaskItemProps) => {
         onPressLabel={handlePressLabel}
         onRemove={handleRemove}
       />
-    </StyledView>
+    </NativeBasedStyledView>
   )
 }
 
@@ -115,7 +115,7 @@ export default function TaskList(props: TaskListProps) {
   const refScrollView = useRef(null)
 
   return (
-    <StylesScrollView w="full" ref={refScrollView}>
+    <NativeBasedStyledScrollView w="full" ref={refScrollView}>
       <AnimatePresence>
         {data.map(item => (
           <AnimatedTaskItem
@@ -131,6 +131,6 @@ export default function TaskList(props: TaskListProps) {
           />
         ))}
       </AnimatePresence>
-    </StylesScrollView>
+    </NativeBasedStyledScrollView>
   )
 }
