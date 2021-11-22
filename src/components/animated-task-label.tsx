@@ -46,6 +46,18 @@ const AnimatedTaskLabel = memo((props: Props) => {
     }),
     [strikethrough, textColor, inactiveTextColor]
   )
+  const strikethroughWidth = useSharedValue(0)
+  const strikethroughAnimatedStyles = useAnimatedStyle(
+    () => ({
+      width: `${strikethroughWidth.value * 100}%`,
+      borderBottomColor: interpolateColor(
+        textColorProgress.value,
+        [0, 1],
+        [textColor, inactiveTextColor]
+      )
+    }),
+    [strikethrough, textColor, inactiveTextColor]
+  )
 
   useEffect(() => {
     const easing = Easing.out(Easing.quad)
@@ -54,11 +66,13 @@ const AnimatedTaskLabel = memo((props: Props) => {
         withTiming(4, { duration: 200, easing }),
         withTiming(0, { duration: 200, easing })
       )
+      strikethroughWidth.value = withTiming(1, { duration: 400, easing })
       textColorProgress.value = withDelay(
         1000,
         withTiming(1, { duration: 400, easing })
       )
     } else {
+      strikethroughWidth.value = withTiming(0, { duration: 400, easing })
       textColorProgress.value = withTiming(0, { duration: 400, easing })
     }
   })
@@ -75,7 +89,12 @@ const AnimatedTaskLabel = memo((props: Props) => {
         >
           {children}
         </AnimatedText>
-        <AnimatedBox position="absolute" h={1} borderBottomWidth={1} />
+        <AnimatedBox
+          position="absolute"
+          h={1}
+          borderBottomWidth={1}
+          style={[strikethroughAnimatedStyles]}
+        />
       </AnimatedHStack>
     </Pressable>
   )
