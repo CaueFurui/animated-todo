@@ -60,6 +60,26 @@ const AnimatedCheckbox = (props: Props) => {
     <Svg
       viewBox={[-MARGIN, -MARGIN, vWidth + MARGIN, vHeight + MARGIN].join(' ')}
     >
+      <Defs>
+        <ClipPath id="clipPath">
+          <Path
+            fill="white"
+            stroke="grey"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d={outlineBoxPath}
+          />
+        </ClipPath>
+      </Defs>
+      <AnimatedStroke
+        progress={progress}
+        d={checkMarkPath}
+        stroke={highlightColor}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        strokeWidth={10}
+        strokeOpacity={checked || false ? 1 : 0}
+      />
       <AnimatedPath
         d={outlineBoxPath}
         strokeWidth={7}
@@ -67,14 +87,17 @@ const AnimatedCheckbox = (props: Props) => {
         strokeLinecap="round"
         animatedProps={animatedBoxProps}
       />
-      <AnimatedStroke
-        progress={progress}
-        d={checkMarkPath}
-        stroke={checkMarkColor}
-        strokeLinejoin="round"
-        strokeLinecap="round"
-        strokeOpacity={checked || false ? 1 : 0}
-      />
+      <G clipPath="url(#clipPath)">
+        <AnimatedStroke
+          progress={progress}
+          d={checkMarkPath}
+          stroke={checkMarkColor}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          strokeWidth={10}
+          strokeOpacity={checked || false ? 1 : 0}
+        />
+      </G>
     </Svg>
   )
 }
