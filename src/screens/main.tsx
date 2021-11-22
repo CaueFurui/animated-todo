@@ -73,7 +73,15 @@ export default function MainScreen() {
       flex={1}
       w="full"
     >
-      <VStack space={5} alignItems="center" w="full">
+      <VStack
+        flex={1}
+        space={1}
+        bg={useColorModeValue('warmGray.50', 'primary.900')}
+        mt="-20px"
+        borderTopLeftRadius="20px"
+        borderTopRightRadius="20px"
+        pt="20px"
+      >
         <TaskList
           data={data}
           onChangeSubject={handleChangeTaskItemSubject}

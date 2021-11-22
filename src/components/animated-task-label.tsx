@@ -74,7 +74,7 @@ const AnimatedTaskLabel = memo((props: Props) => {
       strikethroughWidth.value = withTiming(0, { duration: 400, easing })
       textColorProgress.value = withTiming(0, { duration: 400, easing })
     }
-  })
+  }, [strikethrough, textColor, inactiveTextColor])
 
   return (
     <Pressable onPress={onPress}>
