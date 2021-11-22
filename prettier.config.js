@@ -5,6 +5,6 @@ const options = {
   endOfLine: 'lf',
   semi: false,
   tabWidth: 2,
-  trailingComma: 'none',
+  trailingComma: 'none'
 }
 module.exports = options
