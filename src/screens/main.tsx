@@ -99,7 +99,6 @@ export default function MainScreen() {
           onToggleItem={handleToggleItem}
           editingItemId={editingItemId}
         />
-        <ThemeToggle />
       </VStack>
       <Fab
         position="absolute"
