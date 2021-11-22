@@ -11,6 +11,6 @@
     "moduleResolution": "Node",
     "noEmit": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   }
 }
