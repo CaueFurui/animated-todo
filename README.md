@@ -6,7 +6,6 @@
 
 <img src="doc/thumb.jpeg" height="300" />
 <br />
-<br />
 
 A simple to-do app but with some animation using React Native Reanimated!
 
