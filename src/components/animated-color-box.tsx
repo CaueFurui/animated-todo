@@ -19,7 +19,7 @@ const AnimatedColorBox = ({ bg, ...props }: any) => {
     progress.value = 0
   }, [hexBg])
 
-  const animatedStyle = useAnimatedStyle(() => {
+  const animatedStyles = useAnimatedStyle(() => {
     progress.value = withTiming(1, { duration: 200 })
     return {
       backgroundColor: interpolateColor(
@@ -29,8 +29,7 @@ const AnimatedColorBox = ({ bg, ...props }: any) => {
       )
     }
   }, [hexBg])
-
-  return <AnimatedBox {...props} styled={animatedStyle} />
+  return <AnimatedBox {...props} style={animatedStyles} />
 }
 
 export default AnimatedColorBox
