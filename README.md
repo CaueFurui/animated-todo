@@ -5,10 +5,8 @@
 </a>
 
 <img src="doc/thumb.jpeg" height="300" />
-<br />
 
 A simple to-do app but with some animation using React Native Reanimated!
-
 
 ## Ingredients
 
