@@ -1,5 +1,9 @@
 # Animated Todo App
 
+<a href="https://standardjs.com/">
+  <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide">
+</a>
+
 <img src="doc/thumb.jpeg" height="300" />
 <br />
 <br />
@@ -16,6 +20,11 @@ A simple to-do app but with some animation using React Native Reanimated!
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) - Animations
 - [React Native SVG](https://github.com/react-native-svg/react-native-svg) - SVG Library for RN
 - [Moti](https://moti.fyi/) - Helper module for Reanimated 2
+- [Husky](https://github.com/typicode/husky) - Git hooks
+- [Commitlint](https://github.com/conventional-changelog/commitlint) - Lint commit messages
+- [Commitizen](https://github.com/commitizen/cz-cli) - Command line tool for commit messages
+- [ESlint](https://eslint.org/) - Pluggable Javascript linter
+- [Prettier](https://prettier.io/) - An opinionated code formatter
 
 ## What do I need to run this app
 
